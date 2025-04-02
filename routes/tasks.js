@@ -24,7 +24,7 @@ router.post("/", async (req, res) => {
   try {
     const { text } = req.body;
     if (!text) {
-      return res.status(400).json({ message: "Task cannot be empty." });
+      return res.status(400).json({ message: "Task cannot be empty!" });
     }
 
     const newTask = new Task({
@@ -46,7 +46,7 @@ router.put("/:id", async (req, res) => {
     const { text, completed } = req.body;
     const updatedTask = await Task.findOneAndUpdate(
       { _id: req.params.id, userId: req.user.userId }, // filter
-      { text, completed }, // update
+      { text, completed }, // update content
       { new: true } // options, return new document after update
     );
 
